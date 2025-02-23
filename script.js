@@ -49,4 +49,11 @@ function refreshList() {
 
 }
 
+
+const modal = document.querySelector("[data-modal]")
+const addBookButton = document.querySelector('.addbook');
+addBookButton.addEventListener('click', () => {
+    modal.showModal();
+})
+
 refreshList();

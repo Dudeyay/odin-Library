@@ -8,13 +8,36 @@
     <title>Online Library</title>
 </head>
 <body>
+    <dialog data-modal>
+        <form>
+            <div class="block">
+                <label for="title">Book Name:</label>
+                <input type="text" id="title">
+            </div>
+            <div class="block">
+                <label for="author">Author:</label>
+                <input type="text" id="author">
+            </div>
+            <div class="block">
+                <label for="page">Number of Pages:</label>
+                <input type="number" id="page">
+            </div>
+            <div class="block1">
+                <label for="read">Finished Reading</label>
+                <input type="checkbox" id="read">
+            </div>
+            <div class="block1">
+                <button type="submit" formmethod="dialog">Cancel</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </dialog>
     <div class="banner">
         <h1>Online Library</h1>
         <button class="addbook">Add Book</button>
     </div>
     <div class="main">
-        <div class="books">
-                              
+        <div class="books">            
         </div>
     </div>
 </body>
