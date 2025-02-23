@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+}
+
+h1{
+    margin: 0;
+    
+    font-size: 45px;
+}
+
+p{
+    margin: 12px;
+}
+
+.banner{
+    background-color: rgb(200, 135, 78);
+    padding: 12px;
+    display: flex;
+}
+
+.main{
+    padding: 50px;
+    
+}
+
+.books{
+    background-color: rgb(226, 232, 240);
+    border-radius: 30px;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card{
+    height: 270px;
+    width: 300px;
+    box-sizing: border-box;
+    background-color: bisque;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bookName{
+    font-weight: bold;
+}
+
+.delete img{
+    height: 40px;
+}
+
+.buttons{
+    justify-self: flex-end;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.addbook{
+    margin-left: auto;
+    margin-right: 50px;
+}
