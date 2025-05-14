@@ -135,6 +135,7 @@
 
     closeButton.addEventListener('click', () => {
         // Close the dialog
+        event.preventDefault();
         modal.close();
       });
 
