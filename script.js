@@ -1,5 +1,5 @@
-    let onDisplay = new Map();
-    let bookCount = 0;
+    //let onDisplay = new Map();
+    //let bookCount = 0;
 
     function changeRead(obj, id) {
         if (obj.id === id) {
@@ -7,6 +7,7 @@
         }
     }
 
+    /*
     function book(name, author, pages, readOrNot){
         this.name = name;
         this.author = author;
@@ -15,31 +16,42 @@
         bookCount+=1;
         this.id = bookCount;
     }
+        */
 
     function addBookToLibrary(name, author, pages, readOrNot){
-        const bookToAdd = new book(name, author, pages, readOrNot);
-        myLibrary.push(bookToAdd);
-        onDisplay.set(bookToAdd, false);
+        const bookToAdd = new Book(name, author, pages, readOrNot);
+        Book.myLibrary.push(bookToAdd);
+        Book.onDisplay.set(bookToAdd, false);
         refreshList();
     }
 
-    function printBook(obj) {
-        console.log(obj.name);
-        console.log(obj.author);
-        console.log(obj.pages);
-        console.log(obj.readOrNot);
+    class Book{
+        static bookCount = 0;
+        static onDisplay = new Map();
+        static myLibrary = [];
+
+        constructor(name, author, pages, readOrNot) {
+            this.name = name;
+            this.author = author;
+            this.pages = pages;
+            this.readOrNot = readOrNot;
+            Book.bookCount += 1;
+            this.id = Book.bookCount;
+        }
+
+
     }
 
     
 
-    const myLibrary = [];
+    //const myLibrary = [];
 
-    const book1 = new book("The Great Gatsby", "F. Scott Fitzgerald", 120, false);
-    const book2 = new book("To kill a mockingbird", "Harper Lee", 180, true);
-    onDisplay.set(book1, false);
-    onDisplay.set(book2, false);
-    myLibrary.push(book1);
-    myLibrary.push(book2);
+    const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 120, false);
+    const book2 = new Book("To kill a mockingbird", "Harper Lee", 180, true);
+    Book.onDisplay.set(book1, false);
+    Book.onDisplay.set(book2, false);
+    Book.myLibrary.push(book1);
+    Book.myLibrary.push(book2);
 
     let bookList = document.querySelector(".books");
 
@@ -50,7 +62,7 @@
             element.innerHTML = 'Read';  
         }
 
-        myLibrary.forEach((obj) => {
+        Book.myLibrary.forEach((obj) => {
             changeRead(obj, id);
         });
 
@@ -60,20 +72,20 @@
 
     function deleteBook(id) {
         let deletedBook;
-        for (let i=0; i<myLibrary.length; i++) {
-            if (myLibrary[i].id === id) {
-                deletedBook = myLibrary[i];
-                myLibrary.splice(i,1);
+        for (let i=0; i<Book.myLibrary.length; i++) {
+            if (Book.myLibrary[i].id === id) {
+                deletedBook = Book.myLibrary[i];
+                Book.myLibrary.splice(i,1);
                 break;
             }
         }
-        onDisplay.delete(deletedBook);
+        Book.onDisplay.delete(deletedBook);
         const card = document.getElementById(`${id}`);
         card.parentNode.removeChild(card);
     }
 
     function createCard(obj) {
-        if (!onDisplay.get(obj)) {
+        if (!Book.onDisplay.get(obj)) {
             const name = obj.name;
             const author = obj.author;
             const pages = obj.pages;
@@ -99,13 +111,13 @@
             
             `
             bookList.appendChild(book);
-            onDisplay.set(obj, true);
+            Book.onDisplay.set(obj, true);
         }
 
     }
 
     function refreshList() {
-        myLibrary.forEach(createCard);
+        Book.myLibrary.forEach(createCard);
 
     }
 
